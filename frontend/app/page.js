@@ -1,4 +1,6 @@
+import { Button } from '@/components/ui/button';
 import Spline from '@splinetool/react-spline/next';
+import Link from 'next/link';  // ✅ Correct import
 
 export default function Home() {
   return (
@@ -14,9 +16,16 @@ export default function Home() {
         <h1 className="md:text-9xl sm:text-6xl font-extrabold mb-4 animate-fade-in font-serif tracking-widest">
           LUMOS
         </h1>
-        <p className="text-lg sm:text-2xl font-medium animate-fade-in delay-200">
-          The AI for you
+        <p className="text-lg sm:text-2xl font-medium animate-fade-in italic delay-200">
+          The AI for your notes
         </p>
+
+        {/* ✅ Wrap the Button with Link for navigation */}
+        <Link href="/main" passHref>
+          <Button className="mt-8 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded animate-fade-in delay-400">
+            Get Started
+          </Button>
+        </Link>
       </div>
     </main>
   );
