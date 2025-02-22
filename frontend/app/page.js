@@ -1,12 +1,23 @@
-import React from 'react'
-import MicrophoneComponent from '@/components/AudioRecorder'
+import Spline from '@splinetool/react-spline/next';
 
-const Page = () => {
+export default function Home() {
   return (
-    <div>
-    <MicrophoneComponent />
-    </div>
-  )
-}
+    <main className="min-h-screen flex items-center justify-center bg-black relative">
+      {/* Spline Background */}
+      <Spline scene="https://prod.spline.design/11W8DmfQpwL41xAp/scene.splinecode" />
 
-export default Page
+      {/* Overlay for better text contrast */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
+
+      {/* Floating Text */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4">
+        <h1 className="text-4xl sm:text-6xl font-extrabold mb-4 animate-fade-in">
+          LUMOS
+        </h1>
+        <p className="text-lg sm:text-2xl font-medium animate-fade-in delay-200">
+          The AI just for your needs
+        </p>
+      </div>
+    </main>
+  );
+}
