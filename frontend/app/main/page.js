@@ -2,10 +2,9 @@
 
 import { useState, useRef } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Mic, Upload, SendHorizontal } from "lucide-react"
+import { Upload, SendHorizontal } from "lucide-react"
 import { Spotlight } from "@/components/ui/spotlight"
 
 export default function AudioPage() {
@@ -13,7 +12,7 @@ export default function AudioPage() {
   const fileInputRef = useRef(null)
 
   const handleSend = async () => {
-    const file = fileInputRef.current?.files?.[0] // Get the first file
+    const file = fileInputRef.current?.files?.[0]
 
     if (!file) {
       alert("Please upload a file before sending.")
@@ -66,40 +65,20 @@ export default function AudioPage() {
           <CardHeader>
             <CardTitle className="text-white font-mono">Convert Your Audio</CardTitle>
             <CardDescription className="text-gray-400 font-mono">
-              Choose to record live audio or upload an existing audio file
+              Upload an audio file to get started
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Tabs defaultValue="record" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 mb-8 bg-[#1A1A1A]">
-                <TabsTrigger value="record" className="data-[state=active]:bg-[#2A2A2A]">
-                  <Mic className="w-4 h-4 mr-2" />
-                  Record Audio
-                </TabsTrigger>
-                <TabsTrigger value="upload" className="data-[state=active]:bg-[#2A2A2A]">
-                  <Upload className="w-4 h-4 mr-2 font-mono" />
-                  Upload File
-                </TabsTrigger>
-              </TabsList>
-
-              <TabsContent value="record" className="mt-0">
-                <div className="flex flex-col items-center justify-center p-8 border-2 border-dashed border-gray-800 rounded-lg bg-[#161616]/80">
-                </div>
-              </TabsContent>
-
-              <TabsContent value="upload" className="mt-0">
-                <div className="flex flex-col items-center justify-center p-8 border-2 border-dashed border-gray-800 rounded-lg bg-[#161616]/80">
-                  <Upload className="w-12 h-12 mb-4 text-gray-400" />
-                  <p className="mb-4 text-sm text-gray-400 font-mono">Upload your audio file (MP3, WAV, M4A)</p>
-                  <Input
-                    type="file"
-                    accept="audio/*"
-                    className="max-w-sm bg-[#1A1A1A] border-gray-800 text-white"
-                    ref={fileInputRef}
-                  />
-                </div>
-              </TabsContent>
-            </Tabs>
+            <div className="flex flex-col items-center justify-center p-8 border-2 border-dashed border-gray-800 rounded-lg bg-[#161616]/80">
+              <Upload className="w-12 h-12 mb-4 text-gray-400" />
+              <p className="mb-4 text-sm text-gray-400 font-mono">Upload your audio file (MP3, WAV, M4A)</p>
+              <Input
+                type="file"
+                accept="audio/*"
+                className="max-w-sm bg-[#1A1A1A] border-gray-800 text-white"
+                ref={fileInputRef}
+              />
+            </div>
 
             <div className="flex justify-end mt-6">
               <Button onClick={handleSend} className="bg-gray-600 hover:bg-blue-700 font-mono">
