@@ -11,11 +11,11 @@ export default function Home() {
 
       {/* Floating Text */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4">
-        <h1 className="text-4xl sm:text-6xl font-extrabold mb-4 animate-fade-in font-serif tracki">
+        <h1 className="md:text-9xl sm:text-6xl font-extrabold mb-4 animate-fade-in font-serif tracking-widest">
           LUMOS
         </h1>
         <p className="text-lg sm:text-2xl font-medium animate-fade-in delay-200">
-          The AI for your needs
+          The AI for you
         </p>
       </div>
     </main>

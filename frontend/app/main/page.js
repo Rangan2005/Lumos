@@ -56,16 +56,16 @@ export default function AudioPage() {
       <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
       <div className="container mx-auto px-4 py-8 max-w-3xl relative z-10">
         <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-7xl font-bold tracking-tight mb-2 bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
+          <h1 className="text-4xl md:text-9xl font-bold tracking-tight mb-2 bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
             LUMOS
           </h1>
-          <p className="text-neutral-300 text-lg max-w-lg mx-auto">Illuminate Your Audio</p>
+          <p className="text-neutral-300 text-4xl tracking-widest max-w-lg mx-auto font-mono">Record and Remember</p>
         </div>
 
         <Card className="w-full border-gray-800 bg-[#111111]/80 backdrop-blur-sm">
           <CardHeader>
-            <CardTitle className="text-white">Convert Your Audio</CardTitle>
-            <CardDescription className="text-gray-400">
+            <CardTitle className="text-white font-mono">Convert Your Audio</CardTitle>
+            <CardDescription className="text-gray-400 font-mono">
               Choose to record live audio or upload an existing audio file
             </CardDescription>
           </CardHeader>
@@ -77,7 +77,7 @@ export default function AudioPage() {
                   Record Audio
                 </TabsTrigger>
                 <TabsTrigger value="upload" className="data-[state=active]:bg-[#2A2A2A]">
-                  <Upload className="w-4 h-4 mr-2" />
+                  <Upload className="w-4 h-4 mr-2 font-mono" />
                   Upload File
                 </TabsTrigger>
               </TabsList>
@@ -90,7 +90,7 @@ export default function AudioPage() {
               <TabsContent value="upload" className="mt-0">
                 <div className="flex flex-col items-center justify-center p-8 border-2 border-dashed border-gray-800 rounded-lg bg-[#161616]/80">
                   <Upload className="w-12 h-12 mb-4 text-gray-400" />
-                  <p className="mb-4 text-sm text-gray-400">Upload your audio file (MP3, WAV, M4A)</p>
+                  <p className="mb-4 text-sm text-gray-400 font-mono">Upload your audio file (MP3, WAV, M4A)</p>
                   <Input
                     type="file"
                     accept="audio/*"
@@ -102,8 +102,8 @@ export default function AudioPage() {
             </Tabs>
 
             <div className="flex justify-end mt-6">
-              <Button onClick={handleSend} className="bg-gray-600 hover:bg-blue-700">
-                <SendHorizontal className="w-4 h-4 mr-2" />
+              <Button onClick={handleSend} className="bg-gray-600 hover:bg-blue-700 font-mono">
+                <SendHorizontal className="w-4 h-4 mr-2 font-mono" />
                 Send
               </Button>
             </div>
