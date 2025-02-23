@@ -25,6 +25,7 @@ export default function TextEditorPage() {
     { label: "Summary", endpoint: "summarize" },
     { label: "Meeting report", endpoint: "generate-report" },
     { label: "Main points", endpoint: "extract-main-points" },
+    
   ];
 
   const handleHeadingToggle = () => setIsEditingHeading(!isEditingHeading);

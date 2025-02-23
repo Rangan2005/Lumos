@@ -36,46 +36,53 @@ export default function MainPage() {
           
           {/* Large Glassmorphic Containers */}
           <div className="flex flex-col md:flex-row gap-16 justify-center items-stretch max-w-[95vw] mx-auto">
-            <Card className="flex-1 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 cursor-pointer group relative overflow-hidden min-h-[80vh] min-w-[400px]">
-              <div className="absolute inset-0 z-0">
-                <img 
-                  src="/read.png"
-                  alt="Reads background"
-                  className="w-full h-full object-cover opacity-20 transition-opacity group-hover:opacity-30"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className="relative z-10 h-full flex flex-col">
-                <CardHeader className="flex-grow flex flex-col items-center justify-center">
-                  <CardTitle className="text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-blue-400 to-purple-300 group-hover:scale-105 transition-transform duration-500">
-                    LUMOS WRITE
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="pb-12">
-    
-                </CardContent>
-              </div>
-            </Card>
-
-            <Card className="flex-1 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-2xl hover:shadow-purple-500/10 transition-all duration-500 cursor-pointer group relative overflow-hidden min-h-[80vh] min-w-[400px]">
-              <div className="absolute inset-0 z-0">
-                <img 
-                  src="/record.png"
-                  alt="Writes background"
-                  className="w-full h-full object-cover opacity-20 transition-opacity group-hover:opacity-30"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className="relative z-10 h-full flex flex-col">
-                <CardHeader className="flex-grow flex flex-col items-center justify-center">
-                  <CardTitle className="text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-purple-400 to-pink-300 group-hover:scale-105 transition-transform duration-500">
-                    LUMOS RECORDS
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="pb-12">
-                </CardContent>
-              </div>
-            </Card>
+            <Link href="/main-write">
+              <Card className="flex-1 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 cursor-pointer group relative overflow-hidden min-h-[80vh] min-w-[400px] flex flex-col justify-end">
+                <div className="absolute inset-0 z-0">
+                  <img 
+                    src="/read.png"
+                    alt="Reads background"
+                    className="w-full h-full object-cover opacity-20 transition-opacity group-hover:opacity-30"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="relative z-10 h-full flex flex-col justify-end pb-12">
+                  <CardHeader>
+                    <CardTitle className="text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#c0c0c0] via-[#e8e8e8] to-[#b8b8b8] group-hover:scale-105 transition-transform duration-500 [text-shadow:_2px_2px_2px_rgb(0_0_0_/_20%)] tracking-wider" style={{
+                      WebkitBackgroundClip: 'text',
+                      backgroundImage: 'linear-gradient(180deg, #ffffff 0%, #c0c0c0 50%, #ffffff 100%)',
+                      filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))'
+                    }}>
+                      LUMOS WRITE
+                    </CardTitle>
+                  </CardHeader>
+                </div>
+              </Card>
+            </Link>
+            
+            <Link href="/main">
+              <Card className="flex-1 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-2xl hover:shadow-purple-500/10 transition-all duration-500 cursor-pointer group relative overflow-hidden min-h-[80vh] min-w-[400px] flex flex-col justify-end">
+                <div className="absolute inset-0 z-0">
+                  <img 
+                    src="/record.png"
+                    alt="Writes background"
+                    className="w-full h-full object-cover opacity-20 transition-opacity group-hover:opacity-30"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="relative z-10 h-full flex flex-col justify-end pb-12">
+                  <CardHeader>
+                    <CardTitle className="text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#c0c0c0] via-[#e8e8e8] to-[#b8b8b8] group-hover:scale-105 transition-transform duration-500 [text-shadow:_2px_2px_2px_rgb(0_0_0_/_20%)] tracking-wider" style={{
+                      WebkitBackgroundClip: 'text',
+                      backgroundImage: 'linear-gradient(180deg, #ffffff 0%, #c0c0c0 50%, #ffffff 100%)',
+                      filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))'
+                    }}>
+                      LUMOS RECORDS
+                    </CardTitle>
+                  </CardHeader>
+                </div>
+              </Card>
+            </Link>
           </div>
         </SignedIn>
 
