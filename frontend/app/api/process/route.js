@@ -1,13 +1,15 @@
 import { NextResponse } from 'next/server';
-import fetch from 'node-fetch';
-
+//DO NOT TOUCH THIS , THIS IS WORKING  
 export async function POST(request) {
   try {
+    // Parse the incoming request JSON
     const body = await request.json();
     const { endpoint, text } = body;
 
-    const apiUrl = `http://127.0.0.1:8000${endpoint}`;
+    // Build the URL for your FastAPI endpoint
+    const apiUrl = `https://ai-api-3.onrender.com/${endpoint}`;
 
+    // Forward the request to FastAPI using fetch
     const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
@@ -22,7 +24,6 @@ export async function POST(request) {
 
     const data = await response.json();
     return NextResponse.json(data);
-
   } catch (error) {
     console.error('Error:', error);
     return NextResponse.json(

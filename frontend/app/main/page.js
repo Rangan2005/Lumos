@@ -26,12 +26,13 @@ export default function AudioTranscriptionPage() {
   const [showTranscription, setShowTranscription] = useState(false);
 
   const menuOptions = [
-    { label: "Summary", endpoint: "/summarize" },
-    { label: "Meeting report", endpoint: "/generate-report" },
-    { label: "Main points", endpoint: "/extract-main-points" },
-    { label: "To-do list", endpoint: "/todo" }
+    { label: "Summary", endpoint: "summarize" },
+    { label: "Meeting report", endpoint: "generate-report" },
+    { label: "Main points", endpoint: "extract-main-points" },
+    { label: "To-do list", endpoint: "todo" }
   ];
 
+  // Uploads the file and sets the transcription (similar to how the first snippet handles submission)
   const handleSend = async () => {
     const file = fileInputRef.current?.files?.[0];
 
@@ -57,6 +58,7 @@ export default function AudioTranscriptionPage() {
 
       const data = await response.json();
       
+      // Set heading and transcription from response data
       setHeading(data.title || "Untitled Transcription");
       setTranscription(data.transcription || "");
       setShowTranscription(true);
@@ -70,40 +72,43 @@ export default function AudioTranscriptionPage() {
     }
   };
 
-  const handleHeadingToggle = () => setIsEditingHeading(!isEditingHeading);
-  const handleTranscriptionToggle = () => setIsEditingTranscription(!isEditingTranscription);
-
+  // Processes the transcription using the selected endpoint—mirroring the first snippet’s proxy call logic
   const handleOptionSelect = async (option) => {
     setSelectedOption(option.label);
     setIsProcessing(true);
     setResult("");
     
     try {
+      const payload = {
+        endpoint: option.endpoint,
+        text: transcription,
+      };
+  
       const response = await fetch('/api/process', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          endpoint: option.endpoint,
-          text: transcription
-        }),
+        body: JSON.stringify(payload),
       });
   
       if (!response.ok) throw new Error(`Error with ${option.label}`);
   
       const data = await response.json();
       
-      // Handle different response formats from your FastAPI endpoints
       let processedResult = "";
       if (data.summary) {
         processedResult = data.summary;
       } else if (data.meeting_report) {
         processedResult = data.meeting_report;
       } else if (data.main_points) {
-        processedResult = data.main_points.join('\n');
+        processedResult = Array.isArray(data.main_points)
+          ? data.main_points.join('\n')
+          : data.main_points;
       } else if (data.todo_list) {
-        processedResult = data.todo_list.join('\n');
+        processedResult = Array.isArray(data.todo_list)
+          ? data.todo_list.join('\n')
+          : data.todo_list;
       }
       
       setResult(processedResult);
@@ -114,8 +119,11 @@ export default function AudioTranscriptionPage() {
       setIsProcessing(false);
     }
   };
+  
 
-  // Rest of your component remains the same...
+  const handleHeadingToggle = () => setIsEditingHeading(!isEditingHeading);
+  const handleTranscriptionToggle = () => setIsEditingTranscription(!isEditingTranscription);
+
   if (isGenerating) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#0A0A0A]">
