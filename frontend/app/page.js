@@ -3,7 +3,6 @@ import PricingCards from '@/components/Price';
 import Hero from '@/components/LowHero';
 import Spline from '@splinetool/react-spline/next';
 import Link from 'next/link';  // ✅ Correct import
-import FaqSection from '@/components/FAQ';
 
 export default function Home() {
   return (
@@ -35,7 +34,7 @@ export default function Home() {
     </main>
     <Hero />
     <PricingCards />
-    <FaqSection></FaqSection>
+
     </>
   );
 }
