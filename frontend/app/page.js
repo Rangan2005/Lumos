@@ -20,9 +20,8 @@ export default function Home() {
           The AI for your notes
         </p>
 
-        {/* ✅ Wrap the Button with Link for navigation */}
-        <Link href="/main" passHref>
-          <Button className="mt-8 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded animate-fade-in delay-400">
+        <Link href="/auth" passHref>
+          <Button className="mt-8 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md animate-fade-in delay-400">
             Get Started
           </Button>
         </Link>

@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { MoreVertical, Edit, Check, Search, Upload, SendHorizontal } from "lucide-react";
 import { motion } from "framer-motion";
 import { Spotlight } from "@/components/ui/spotlight";
+import LumosNavigation from '@/components/LumosNavigate';
 
 export default function AudioTranscriptionPage() {
   const [isGenerating, setIsGenerating] = useState(false);
@@ -29,7 +30,6 @@ export default function AudioTranscriptionPage() {
     { label: "Summary", endpoint: "summarize" },
     { label: "Meeting report", endpoint: "generate-report" },
     { label: "Main points", endpoint: "extract-main-points" },
-    { label: "To-do list", endpoint: "todo" }
   ];
 
   // Uploads the file and sets the transcription (similar to how the first snippet handles submission)
@@ -301,6 +301,7 @@ export default function AudioTranscriptionPage() {
           </Card>
         )}
       </div>
+      <LumosNavigation></LumosNavigation>
     </div>
   );
 }
