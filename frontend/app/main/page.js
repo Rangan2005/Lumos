@@ -76,52 +76,85 @@ export default function AudioTranscriptionPage() {
 
   // Processes the transcription using the selected endpoint—mirroring the first snippet’s proxy call logic
   const handleOptionSelect = async (option) => {
-    setSelectedOption(option.label);
-    setIsProcessing(true);
-    setResult("");
-    
-    try {
-      const payload = {
-        endpoint: option.endpoint,
-        text: transcription,
-      };
-  
-      const response = await fetch('/api/process', {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-  
-      if (!response.ok) throw new Error(`Error with ${option.label}`);
-  
-      const data = await response.json();
-      
-      let processedResult = "";
-      if (data.summary) {
-        processedResult = data.summary;
-      } else if (data.meeting_report) {
-        processedResult = data.meeting_report;
-      } else if (data.main_points) {
-        processedResult = Array.isArray(data.main_points)
-          ? data.main_points.join('\n')
-          : data.main_points;
-      } else if (data.todo_list) {
-        processedResult = Array.isArray(data.todo_list)
-          ? data.todo_list.join('\n')
-          : data.todo_list;
-      }
-      
-      setResult(processedResult);
-    } catch (error) {
-      console.error("Error processing request:", error);
-      setResult("An error occurred. Please try again.");
-    } finally {
-      setIsProcessing(false);
+  // Validate option object and its required properties
+  if (!option || !option.label || !option.endpoint) {
+    console.error("Invalid option provided:", option);
+    setResult("Invalid option selected.");
+    return;
+  }
+
+  // Validate that transcription is provided and non-empty
+  if (!transcription || transcription.trim() === "") {
+    console.error("Transcription is empty or undefined.");
+    setResult("No transcription available.");
+    return;
+  }
+
+  setSelectedOption(option.label);
+  setIsProcessing(true);
+  setResult("");
+
+  try {
+    const payload = {
+      endpoint: option.endpoint,
+      text: transcription,
+    };
+    console.log("Payload:", payload);
+
+    const response = await fetch("/api/process", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    // If the response is not ok, log the error details
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`Error with ${option.label}: Status ${response.status}`, errorText);
+      throw new Error(`Error with ${option.label}`);
     }
-  };
-  
+
+    // Try parsing the JSON response
+    let data;
+    try {
+      data = await response.json();
+    } catch (jsonError) {
+      console.error("Error parsing JSON response:", jsonError);
+      throw new Error("Invalid JSON response from server.");
+    }
+
+    // Process the response by checking all potential keys
+    let processedResult = "";
+    if (data.summary) {
+      processedResult = data.summary;
+    } else if (data.meeting_report) {
+      processedResult = data.meeting_report;
+    } else if (data.main_points) {
+      processedResult = Array.isArray(data.main_points)
+        ? data.main_points.join("\n")
+        : data.main_points;
+    } else if (data.todo_list) {
+      processedResult = Array.isArray(data.todo_list)
+        ? data.todo_list.join("\n")
+        : data.todo_list;
+    } else if (data.REDACTED) {
+      processedResult = data.REDACTED;
+    } else {
+      console.warn("Unexpected response structure:", data);
+      processedResult = "Received an unexpected response from the server.";
+    }
+
+    setResult(processedResult);
+  } catch (error) {
+    console.error("Error processing request:", error);
+    setResult("An error occurred. Please try again.");
+  } finally {
+    setIsProcessing(false);
+  }
+};
+
 
   const handleHeadingToggle = () => setIsEditingHeading(!isEditingHeading);
   const handleTranscriptionToggle = () => setIsEditingTranscription(!isEditingTranscription);

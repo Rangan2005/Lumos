@@ -25,7 +25,8 @@
         { label: "Summary", endpoint: "summarize" },
         { label: "Meeting report", endpoint: "generate-report" },
         { label: "Main points", endpoint: "extract-main-points" },
-        { label: "To-Do ", endpoint: "todo" }
+        { label: "To-Do ", endpoint: "todo" },
+    {label:"Redaction",endpoint:"redact"},
     ];
 
     const handleHeadingToggle = () => setIsEditingHeading(!isEditingHeading);
