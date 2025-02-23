@@ -1,10 +1,14 @@
 import { Button } from '@/components/ui/button';
-
+import PricingCards from '@/components/Price';
+import Hero from '@/components/LowHero';
 import Spline from '@splinetool/react-spline/next';
 import Link from 'next/link';  // ✅ Correct import
+import FaqSection from '@/components/FAQ';
 
 export default function Home() {
   return (
+    <>
+    
     <main className="min-h-screen flex items-center justify-center bg-black relative">
       {/* Spline Background */}
       <Spline scene="https://prod.spline.design/11W8DmfQpwL41xAp/scene.splinecode" />
@@ -29,5 +33,9 @@ export default function Home() {
 
       </div>
     </main>
+    <Hero />
+    <PricingCards />
+    <FaqSection></FaqSection>
+    </>
   );
 }
