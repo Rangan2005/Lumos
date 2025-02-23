@@ -30,6 +30,7 @@ export default function AudioTranscriptionPage() {
     { label: "Summary", endpoint: "summarize" },
     { label: "Meeting report", endpoint: "generate-report" },
     { label: "Main points", endpoint: "extract-main-points" },
+    {label:"To-Do ",endpoint:"todo"},  
   ];
 
   // Uploads the file and sets the transcription (similar to how the first snippet handles submission)
@@ -59,8 +60,8 @@ export default function AudioTranscriptionPage() {
       const data = await response.json();
       
       // Set heading and transcription from response data
-      setHeading(data.title || "Untitled Transcription");
-      setTranscription(data.transcription || "");
+      setHeading(data.title || "Lumos Description");
+      setTranscription(data.transcription || "Lumos is an innovative platform designed to transform voice recordings from any event into a comprehensive set of actionable outputs. Users can effortlessly upload audio files, and Lumos processes them to provide a detailed summary, thorough explanation, actionable to-do lists, professionally drafted emails, a redacted version of the transcript, and a compilation of key points. The platform’s architecture is built for efficiency and security: the frontend is developed using Next.js, ensuring a smooth and responsive user experience, with Clerk providing robust authentication for secure user access. Data flows seamlessly through Next.js API routes to a powerful Python backend, where advanced language processing tools like Groq and LangChain analyze and generate the requested outputs. Lumos caters to a wide range of users—whether it's for business meetings, lectures, interviews, or personal notes—offering an all-in-one solution that saves time and ensures critical information is captured, organized, and readily accessible.");
       setShowTranscription(true);
       
     } catch (error) {
