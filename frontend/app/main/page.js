@@ -31,6 +31,7 @@ export default function AudioTranscriptionPage() {
     { label: "Meeting report", endpoint: "generate-report" },
     { label: "Main points", endpoint: "extract-main-points" },
     {label:"To-Do ",endpoint:"todo"},  
+    {label:"Redaction",endpoint:"redact"},
   ];
 
   // Uploads the file and sets the transcription (similar to how the first snippet handles submission)
