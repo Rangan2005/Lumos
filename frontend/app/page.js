@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+
 import Spline from '@splinetool/react-spline/next';
 import Link from 'next/link';  // ✅ Correct import
 
@@ -25,6 +26,7 @@ export default function Home() {
             Get Started
           </Button>
         </Link>
+
       </div>
     </main>
   );

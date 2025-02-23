@@ -139,12 +139,15 @@ export default function AudioTranscriptionPage() {
     <div className="min-h-screen bg-black/[0.96] bg-grid-white/[0.02] text-white relative overflow-hidden">
       <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
       <div className="container mx-auto px-4 py-8 max-w-3xl relative z-10">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-9xl font-bold tracking-tight mb-2 bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
-            LUMOS
-          </h1>
-          <p className="text-neutral-300 text-4xl tracking-widest max-w-lg mx-auto font-mono">Record and Remember</p>
-        </div>
+      <div className="text-center mb-8">
+  <h1 className="text-4xl md:text-9xl font-bold tracking-tight mb-2 bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
+    LUMOS
+  </h1>
+  <p className="text-neutral-300 text-4xl tracking-widest max-w-lg mx-auto font-mono bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-900">
+    Record and Remember
+  </p>
+</div>
+
 
         {!showTranscription ? (
           <Card className="w-full border-gray-800 bg-[#111111]/80 backdrop-blur-sm mb-8">
